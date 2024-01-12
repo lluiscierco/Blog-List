@@ -1,14 +1,7 @@
-const express = require("express");
-const usersRouter = require("./routes/users");
-const app = express();
-const port = 3000;
+const app = require("./app");
+const config = require("./utils/config");
+const logger = require("./utils/logger");
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
-
-app.use("/users", usersRouter);
-
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+app.listen(config.PORT, () => {
+  logger.info(`Server running on port ${config.PORT}`);
 });
