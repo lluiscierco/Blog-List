@@ -146,4 +146,9 @@ describe("favorite blog", () => {
       __v: 0,
     });
   });
+
+  test("an empty array", () => {
+    const result = listHelper.favoriteBlog([]);
+    expect(result).toEqual({});
+  });
 });

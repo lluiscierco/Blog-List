@@ -14,7 +14,9 @@ const favoriteBlog = (blogs) => {
     return max > blog.likes ? max : blog.likes;
   };
   const maxLikes = blogs.reduce(reducer, -1);
-  return blogs.find((blog) => blog.likes === maxLikes);
+  return blogs.length === 0
+    ? {}
+    : blogs.find((blog) => blog.likes === maxLikes);
 };
 
 // Export
