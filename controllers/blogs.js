@@ -17,4 +17,26 @@ blogsRouter.post("/", (request, response) => {
   });
 });
 
+blogsRouter.delete("/:id", (request, response) => {
+  Blog.findByIdAndRemove(request.params.id).then((result) => {
+    response.status(204).end();
+  });
+});
+
+blogsRouter.put("/:_id", (request, response) => {
+  const body = request.body;
+  /*
+  const blog = {
+    content: body.content,
+    important: body.important,
+  }
+  */
+  console.log("here ID:", request.params._id);
+  Blog.findByIdAndUpdate(request.params._id, body, { new: true }) //return new doc
+    .then((updatedBlog) => {
+      console.log(updatedBlog);
+      response.json(updatedBlog);
+    });
+});
+
 module.exports = blogsRouter;
