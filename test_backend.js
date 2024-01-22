@@ -1,6 +1,7 @@
 const axios = require("axios");
 const apiUrl = "http://localhost:3003/api/blogs";
 const usersUrl = "http://localhost:3003/api/users";
+const loginUrl = "http://localhost:3003/api/login";
 
 // Blog DB testing
 
@@ -18,14 +19,14 @@ axios
     console.log("success!");
   })
   .catch((error) => console.log("error"));
- */
+
 axios
   .get(apiUrl)
   .then((response) => {
     console.log("success", JSON.stringify(response.data, null, 2));
   })
   .catch((error) => console.log("error", error.response.data));
-/*
+
 axios
   .delete(`${apiUrl}/65a16e98418af474427f3b76`)
   .then((response) => {
@@ -56,3 +57,16 @@ axios
   })
   .catch((error) => console.log("error"));
 */
+
+// Token AUTH
+user = {
+  username: "Yoyi28",
+  password: "secret.19",
+};
+
+axios
+  .post(loginUrl, user)
+  .then((response) => {
+    console.log("success!", response.data);
+  })
+  .catch((error) => console.log("error"));
