@@ -6,19 +6,25 @@ const loginUrl = "http://localhost:3003/api/login";
 // Blog DB testing
 
 const blog = {
-  title: "LOTR",
-  author: "Tolkien",
-  url: "Test.com",
-  likes: 10,
+  title: "How to Win",
+  author: "Me",
+  url: "htw.com",
+  likes: 30,
   user: "65ada01c71f6a9d577490a9e",
 };
+const token =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IllveWkyOCIsImlkIjoiNjVhZGEwMWM3MWY2YTlkNTc3NDkwYTllIiwiaWF0IjoxNzA1OTM4MDg1fQ.uN8mVOkWvPLWzpp667hMzPfUqda_yJSLnUhaJTBXzlE";
 /*
 axios
-  .post("http://localhost:3003/api/blogs", blog)
-  .then((response) => {
-    console.log("success!");
+  .post("http://localhost:3003/api/blogs", blog, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
   })
-  .catch((error) => console.log("error"));
+  .then((response) => {
+    console.log("success!", response.data);
+  })
+  .catch((error) => console.log("error", error.message));
 
 axios
   .get(apiUrl)
@@ -26,15 +32,17 @@ axios
     console.log("success", JSON.stringify(response.data, null, 2));
   })
   .catch((error) => console.log("error", error.response.data));
-
+ */
 axios
-  .delete(`${apiUrl}/65a16e98418af474427f3b76`)
+  .delete(`${apiUrl}/65ae5e8f721b79ef2a802a87`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
   .then((response) => {
     console.log("success", response.data);
   })
-  .catch((error) => console.log("error", error.response.data));
-  */
-
+  .catch((error) => console.log("error", error.message));
 // Users DB testing
 user = {
   username: "Yoyi28",
@@ -56,7 +64,7 @@ axios
     console.log("success!", JSON.stringify(response.data, null, 2));
   })
   .catch((error) => console.log("error"));
-*/
+
 
 // Token AUTH
 user = {
@@ -70,3 +78,4 @@ axios
     console.log("success!", response.data);
   })
   .catch((error) => console.log("error"));
+*/
